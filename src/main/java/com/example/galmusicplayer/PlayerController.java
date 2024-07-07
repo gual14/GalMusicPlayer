@@ -31,7 +31,7 @@ public class PlayerController implements Initializable {
     @FXML
     private ProgressBar songProgressBar;
 
-    private bool isPlaying;
+    private boolean isPlaying;
     private File currentFile;
     private int[] speeds = {25, 50, 75, 100, 125, 150, 175, 200};
     private Timer timer;
@@ -58,6 +58,17 @@ public class PlayerController implements Initializable {
 
     public void playPauseMedia() {
 
+        if(media != null) {
+            if (isPlaying) {
+                isPlaying = false;
+                mediaPlayer.pause();
+            }
+            else {
+                isPlaying = true;
+                mediaPlayer.play();
+            }
+
+        }
     }
 
     public void resetMedia() {
