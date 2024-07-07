@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -38,6 +40,7 @@ public class PlayerController implements Initializable {
     private ProgressBar songProgressBar;
 
     private boolean isPlaying;
+    private boolean isLoaded = false;
     private File currentFile;
     private final int[] speeds = {25, 50, 75, 100, 125, 150, 175, 200};
     private Timer timer;
@@ -50,9 +53,23 @@ public class PlayerController implements Initializable {
         for (int speed : speeds) {
             speedComboBox.getItems().add(speed + "%");
         }
+        pane.setOnKeyPressed(this::handleKeyPressed);
         speedComboBox.setOnAction(this::changeSpeed);
-        volumeSlider.valueProperty().addListener((observableValue, number, t1) -> mediaPlayer.setVolume(volumeSlider.getValue() * 0.01));
+        volumeSlider.valueProperty().addListener((observableValue, number, t1) -> {
+            if (isLoaded) {
+                mediaPlayer.setVolume(volumeSlider.getValue() * 0.01);
+            }
+        });
+    }
 
+    public void handleKeyPressed(KeyEvent keyEvent) {
+//        if (keyEvent.getCode() == KeyCode.SPACE)
+//        {
+//            playPauseMedia();
+//        }
+        if (keyEvent.getCode() == KeyCode.LEFT || keyEvent.getCode() == KeyCode.KP_LEFT) {
+            resetMedia();
+        }
     }
 
     public void loadMedia() {
@@ -62,19 +79,29 @@ public class PlayerController implements Initializable {
                 ,new FileChooser.ExtensionFilter("WAV Files", "*.wav")
         );
         currentFile = fileChooser.showOpenDialog(null);
+        unloadMedia();
+        isLoaded = true;
         media = new Media(currentFile.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         songLabel.setText(currentFile.getName());
     }
 
     public void unloadMedia() {
+        if (!isLoaded) {
+            return;
+        }
+        cancelTimer();
+        mediaPlayer.pause();
         mediaPlayer = null;
         media = null;
         songLabel.setText("Load A Song First");
+        isLoaded = false;
+        songProgressBar.setProgress(0);
     }
 
     public void showAbout() {
-
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "GalMusicPlayer About");
+        alert.show();
     }
 
     public void playPauseMedia() {
@@ -86,7 +113,6 @@ public class PlayerController implements Initializable {
             }
             else {
                 beginTimer();
-                changeSpeed(null);
                 mediaPlayer.play();
             }
 
@@ -121,7 +147,7 @@ public class PlayerController implements Initializable {
                 songProgressBar.setProgress(current/end);
             }
         };
-        timer.scheduleAtFixedRate(task, 1000,1000);
+        timer.scheduleAtFixedRate(task, 1000,250);
     }
 
     public void cancelTimer() {

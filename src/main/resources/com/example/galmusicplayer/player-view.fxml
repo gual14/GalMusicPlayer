@@ -5,7 +5,7 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane maxHeight="300.0" maxWidth="1000.0" minHeight="300.0" minWidth="1000.0" prefHeight="300.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.galmusicplayer.PlayerController">
+<AnchorPane maxHeight="300.0" maxWidth="1000.0" minHeight="300.0" minWidth="1000.0" prefHeight="300.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:id="pane" fx:controller="com.example.galmusicplayer.PlayerController">
          <MenuBar layoutX="14.0" layoutY="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                 <Menu mnemonicParsing="false" text="File">
                     <MenuItem fx:id="loadSongBtn" mnemonicParsing="false" onAction="#loadMedia" text="Load Song" />
