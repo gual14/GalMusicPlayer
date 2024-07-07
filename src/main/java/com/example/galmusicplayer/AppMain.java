@@ -3,7 +3,6 @@ package com.example.galmusicplayer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
@@ -17,9 +16,7 @@ public class AppMain extends Application {
         //stage.setResizable(false);
         stage.setTitle("Gal Music Player");
         PlayerController controller = fxmlLoader.getController();
-        scene.addEventFilter(KeyEvent.KEY_PRESSED, keyEvent -> {
-            controller.handleKeyPressed(keyEvent);
-        });
+        scene.addEventFilter(KeyEvent.KEY_PRESSED, controller::handleKeyPressed);
         stage.setScene(scene);
         stage.show();
     }
