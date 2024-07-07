@@ -1,14 +1,81 @@
 package com.example.galmusicplayer;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 
-public class PlayerController {
-    @FXML
-    private Label welcomeText;
+import java.net.URL;
+import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class PlayerController implements Initializable {
 
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    private AnchorPane pane;
+
+    @FXML
+    private Label songLabel;
+
+    @FXML
+    private Button playPauseBtn, resetBtn;
+
+    @FXML
+    private ComboBox<String> speedComboBox;
+
+    @FXML
+    private Slider volumeSlider;
+
+    @FXML
+    private ProgressBar songProgressBar;
+
+    private bool isPlaying;
+    private File currentFile;
+    private int[] speeds = {25, 50, 75, 100, 125, 150, 175, 200};
+    private Timer timer;
+    private TimerTask task;
+
+    private Media media;
+    private MediaPlayer mediaPlayer;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
+
+    public void loadMedia() {
+
+    }
+
+    public void unloadMedia() {
+
+    }
+
+    public void showAbout() {
+
+    }
+
+    public void playPauseMedia() {
+
+    }
+
+    public void resetMedia() {
+
+    }
+
+    public void changeSpeed(ActionEvent event) {
+
+    }
+
+    public void beginTimer() {
+
+    }
+
+    public void cancelTimer() {
+
+    }
+
+
+
 }

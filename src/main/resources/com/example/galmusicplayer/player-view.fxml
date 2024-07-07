@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="300.0" maxWidth="1000.0" minHeight="300.0" minWidth="1000.0" prefHeight="300.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-      <MenuBar layoutX="14.0" layoutY="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-          <Menu mnemonicParsing="false" text="File">
-              <MenuItem fx:id="loadSongBtn" mnemonicParsing="false" text="Load Song" />
-                  <MenuItem fx:id="unloadSongBtn" mnemonicParsing="false" text="Unload Song" />
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-              <MenuItem mnemonicParsing="false" text="About" />
-          </Menu>
-      </MenuBar>
-      <Label fx:id="songLabel" alignment="CENTER" layoutX="14.0" layoutY="66.0" prefHeight="93.0" prefWidth="969.0" text="SONG NAME" textAlignment="CENTER" textFill="LIME" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-         <font>
-            <Font size="48.0" />
-         </font>
-      </Label>
-      <ProgressBar fx:id="songProgressBar" layoutX="30.0" layoutY="159.0" prefHeight="45.0" prefWidth="936.0" progress="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-      <ToolBar layoutX="14.0" layoutY="204.0" prefHeight="55.0" prefWidth="971.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-          <Button fx:id="playPauseBtn" mnemonicParsing="false" text="PLAY/PAUSE" textAlignment="CENTER">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Button>
-            <Button fx:id="resetBtn" mnemonicParsing="false" text="RESET" textAlignment="CENTER">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Button>
-            <ComboBox fx:id="speedComboBox" prefHeight="77.0" prefWidth="150.0" promptText="SPEED" />
-            <Slider fx:id="volumeSlider" prefHeight="75.0" prefWidth="240.0" showTickMarks="true" value="50.0" />
-      </ToolBar>
+         <MenuBar layoutX="14.0" layoutY="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <Menu mnemonicParsing="false" text="File">
+                    <MenuItem fx:id="loadSongBtn" mnemonicParsing="false" onAction="#loadMedia" text="Load Song" />
+                    <MenuItem fx:id="unloadSongBtn" mnemonicParsing="false" onAction="#unloadMedia" text="Unload Song" />
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                       <MenuItem fx:id="aboutBtn" mnemonicParsing="false" onAction="#showAbout" text="About" />
+                </Menu>
+         </MenuBar>
+         <Label fx:id="songLabel" alignment="CENTER" layoutX="14.0" layoutY="66.0" prefHeight="93.0" prefWidth="969.0" text="SONG NAME" textAlignment="CENTER" textFill="LIME" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <font>
+               <Font size="48.0" />
+            </font>
+         </Label>
+         <ProgressBar fx:id="songProgressBar" layoutX="30.0" layoutY="159.0" prefHeight="45.0" prefWidth="936.0" progress="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+         <ToolBar layoutX="14.0" layoutY="204.0" prefHeight="55.0" prefWidth="971.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                <Button fx:id="playPauseBtn" mnemonicParsing="false" onAction="#playPauseMedia" text="PLAY/PAUSE" textAlignment="CENTER">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="resetBtn" mnemonicParsing="false" onAction="#resetMedia" text="RESET" textAlignment="CENTER">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Button>
+                  <ComboBox fx:id="speedComboBox" onAction="#changeSpeed" prefHeight="77.0" prefWidth="150.0" promptText="SPEED" />
+                  <Slider fx:id="volumeSlider" prefHeight="75.0" prefWidth="240.0" showTickMarks="true" value="50.0" />
+         </ToolBar>
 </AnchorPane>
